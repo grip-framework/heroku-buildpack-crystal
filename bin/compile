@@ -69,9 +69,9 @@ finished
 
 NO_DEBUG_IF_AVAILABLE=`crystal build --help | grep -q -- --no-debug && echo -n --no-debug`
 
-if [ -f app.cr ]; then
-  start "Compiling app.cr (using old behaviour, app.cr exists - ignoring shard.yml)"
-    crystal build app.cr --release $NO_DEBUG_IF_AVAILABLE
+if [ -f Makefile ]; then
+  start "Compiling using the Makefile, default command which executed is: build"
+    make build
   finished
 else
   eval $(parse_yaml shard.yml "shard_")
